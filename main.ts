@@ -1,9 +1,37 @@
+namespace SpriteKind {
+    export const bird = SpriteKind.create()
+}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.vy = -100
 })
 function level1 () {
     tiles.setTilemap(tilemap`level1`)
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(8, 88))
+    bird.setImage(img`
+        ....ffffff.........ccc..
+        ....ff22ccf.......cc4f..
+        .....ffccccfff...cc44f..
+        ....cc24442222cccc442f..
+        ...c9b4422222222cc422f..
+        ..c999b2222222222222fc..
+        .c2b99111b222222222c22c.
+        c222b111992222ccccccc22f
+        f222222222222c222ccfffff
+        .f2222222222442222f.....
+        ..ff2222222cf442222f....
+        ....ffffffffff442222c...
+        .........f2cfffc2222c...
+        .........fcc2ffffffff...
+        ..........fc2ffff.......
+        ...........fffff........
+        `)
+    tiles.placeOnTile(bird, tiles.getTileLocation(15, 85))
+    bird.setVelocity(-100, 0)
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`transparency16`, function (sprite, location) {
+	
+})
+let bird: Sprite = null
 let mySprite: Sprite = null
 mySprite = sprites.create(img`
     . . . . . f f 4 4 f f . . . . . 
@@ -24,6 +52,24 @@ mySprite = sprites.create(img`
     . . . . . f f b b f f . . . . . 
     `, SpriteKind.Player)
 mySprite.ay = 200
+bird = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.bird)
 level1()
 forever(function () {
     controller.moveSprite(mySprite, 100, 0)
