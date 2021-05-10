@@ -21,7 +21,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function level1 () {
     tiles.setTilemap(tilemap`level1`)
-    tiles.placeOnTile(mySprite, tiles.getTileLocation(4, 88))
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(4, 87))
     star.setImage(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -163,6 +163,10 @@ function level1 () {
     star6.setVelocity(0, randint(30, 80))
     star7.setVelocity(0, randint(30, 80))
 }
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
+    mySprite.destroy()
+    game.over(false)
+})
 scene.onOverlapTile(SpriteKind.star2, sprites.dungeon.hazardLava0, function (sprite, location) {
     star2.destroy()
 })
@@ -194,26 +198,6 @@ scene.onOverlapTile(SpriteKind.star5, sprites.dungeon.hazardLava0, function (spr
 sprites.onOverlap(SpriteKind.star, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     star.destroy()
-    star.setImage(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . b d b . . . . . . 
-        . . . . . . . b d b c . . . . . 
-        . . . . b b c 5 5 5 c b b . . . 
-        . . . . b 5 5 5 1 5 5 5 b . . . 
-        . . . c c 5 5 5 1 5 5 5 c c . . 
-        . . b b 5 5 5 1 1 1 5 5 5 b b . 
-        . . d d 5 1 1 1 1 1 1 1 5 d d . 
-        . . b b 5 5 5 1 1 1 5 5 5 b b . 
-        . . . c c 5 5 5 1 5 5 5 c c . . 
-        . . . . b 5 5 5 1 5 5 5 b . . . 
-        . . . . b b c 5 5 5 c b b . . . 
-        . . . . . . c b d b c . . . . . 
-        . . . . . . . b d b . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)
-    tiles.placeOnTile(star, tiles.getTileLocation(randint(0, 10), randint(0, 80)))
-    star.setVelocity(0, randint(30, 80))
 })
 scene.onOverlapTile(SpriteKind.star6, sprites.dungeon.hazardLava0, function (sprite, location) {
     star6.destroy()
