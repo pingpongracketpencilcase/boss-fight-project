@@ -12,6 +12,7 @@ namespace SpriteKind {
     export const food2 = SpriteKind.create()
     export const food3 = SpriteKind.create()
     export const food4 = SpriteKind.create()
+    export const flag = SpriteKind.create()
 }
 function createStars () {
     star = sprites.create(img`
@@ -154,6 +155,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food3, function (sprite, otherSp
 })
 function level1 () {
     tiles.setTilemap(tilemap`level1`)
+    tiles.placeOnTile(flag, tiles.getTileLocation(4.5, 0))
     tiles.placeOnTile(mySprite, tiles.getTileLocation(4, 87))
     starsPlacement()
     food1.setImage(img`
@@ -237,6 +239,9 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sp
     mySprite.destroy()
     game.over(false)
 })
+function level2 () {
+    tiles.setTilemap(tilemap`level3`)
+}
 sprites.onOverlap(SpriteKind.star2, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     star2.destroy()
@@ -415,6 +420,9 @@ sprites.onOverlap(SpriteKind.star4, SpriteKind.Player, function (sprite, otherSp
     info.changeScoreBy(1)
     star4.destroy()
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.flag, function (sprite, otherSprite) {
+    level2()
+})
 let star7: Sprite = null
 let star6: Sprite = null
 let star5: Sprite = null
@@ -426,6 +434,7 @@ let food4: Sprite = null
 let food3: Sprite = null
 let food2: Sprite = null
 let food1: Sprite = null
+let flag: Sprite = null
 let mySprite: Sprite = null
 info.setScore(0)
 mySprite = sprites.create(img`
@@ -448,6 +457,24 @@ mySprite = sprites.create(img`
     `, SpriteKind.Player)
 mySprite.ay = 200
 createStars()
+flag = sprites.create(img`
+    . . f f f f f f f f f f f f f f 
+    . . f f f f f f f f f f f f f f 
+    . . f f f f f f f f f f f f f f 
+    . . f f f f f f f f f f f f f f 
+    . . f f f f f f f f f f f f f f 
+    . . f f f f f f f f f f f f f f 
+    . . f f f f f f f f f f f f f f 
+    . . f f f f f f f f f f f f f f 
+    . . f f . . . . . . . . . . . . 
+    . . f f . . . . . . . . . . . . 
+    . . f f . . . . . . . . . . . . 
+    . . f f . . . . . . . . . . . . 
+    . . f f . . . . . . . . . . . . 
+    . . f f . . . . . . . . . . . . 
+    . . f f . . . . . . . . . . . . 
+    . . f f . . . . . . . . . . . . 
+    `, SpriteKind.flag)
 food1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
