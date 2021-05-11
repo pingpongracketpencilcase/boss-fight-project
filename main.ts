@@ -13,7 +13,12 @@ namespace SpriteKind {
     export const food3 = SpriteKind.create()
     export const food4 = SpriteKind.create()
     export const flag = SpriteKind.create()
+    export const redflag = SpriteKind.create()
+    export const food5 = SpriteKind.create()
 }
+scene.onOverlapTile(SpriteKind.star5, sprites.dungeon.hazardLava1, function (sprite, location) {
+    star5.destroy()
+})
 function createStars () {
     star = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -142,6 +147,9 @@ function createStars () {
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.star7)
 }
+scene.onOverlapTile(SpriteKind.star, sprites.dungeon.hazardLava1, function (sprite, location) {
+    star.destroy()
+})
 sprites.onOverlap(SpriteKind.star5, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     star5.destroy()
@@ -155,7 +163,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food3, function (sprite, otherSp
 })
 function level1 () {
     tiles.setTilemap(tilemap`level1`)
-    tiles.placeOnTile(flag, tiles.getTileLocation(4.5, 0))
+    tiles.placeOnTile(flag, tiles.getTileLocation(5, 87))
     tiles.placeOnTile(mySprite, tiles.getTileLocation(4, 87))
     starsPlacement()
     food1.setImage(img`
@@ -234,13 +242,64 @@ function level1 () {
         . . . . . . . . . . . . . . . . 
         `)
     tiles.placeOnTile(food4, tiles.getTileLocation(5, 79))
+    food5.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . b d b c . . . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . d d 5 1 1 1 1 1 1 1 5 d d . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . . . c b d b c . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
+    tiles.placeOnTile(food5, tiles.getTileLocation(4, 74))
 }
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
     mySprite.destroy()
     game.over(false)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.redflag, function (sprite, otherSprite) {
+    redflag.destroy()
+    level3()
+})
+function level3 () {
+    tiles.setTilemap(tilemap`level4`)
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 11))
+}
+scene.onOverlapTile(SpriteKind.star4, sprites.dungeon.hazardLava1, function (sprite, location) {
+    star4.destroy()
+})
 function level2 () {
     tiles.setTilemap(tilemap`level3`)
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 7))
+    controller.moveSprite(mySprite, 100, 0)
+    redflag = sprites.create(img`
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        . . 2 2 . . . . . . . . . . . . 
+        . . 2 2 . . . . . . . . . . . . 
+        . . 2 2 . . . . . . . . . . . . 
+        . . 2 2 . . . . . . . . . . . . 
+        . . 2 2 . . . . . . . . . . . . 
+        . . 2 2 . . . . . . . . . . . . 
+        . . 2 2 . . . . . . . . . . . . 
+        . . 2 2 . . . . . . . . . . . . 
+        `, SpriteKind.redflag)
+    tiles.placeOnTile(redflag, tiles.getTileLocation(3, 7))
 }
 sprites.onOverlap(SpriteKind.star2, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
@@ -258,17 +317,30 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food2, function (sprite, otherSp
     food2.destroy()
     info.changeScoreBy(1)
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
+    mySprite.destroy()
+    game.over(false)
+})
 sprites.onOverlap(SpriteKind.star7, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     star7.destroy()
+})
+scene.onOverlapTile(SpriteKind.star6, sprites.dungeon.hazardLava1, function (sprite, location) {
+    star6.destroy()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.food4, function (sprite, otherSprite) {
     food4.destroy()
     info.changeScoreBy(1)
 })
+scene.onOverlapTile(SpriteKind.star7, sprites.dungeon.hazardLava1, function (sprite, location) {
+    star7.destroy()
+})
 sprites.onOverlap(SpriteKind.star, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     star.destroy()
+})
+scene.onOverlapTile(SpriteKind.star3, sprites.dungeon.hazardLava1, function (sprite, location) {
+    star3.destroy()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.food1, function (sprite, otherSprite) {
     food1.destroy()
@@ -408,28 +480,50 @@ function starsPlacement () {
     tiles.placeOnTile(star5, tiles.getTileLocation(randint(0, 10), randint(0, 80)))
     tiles.placeOnTile(star6, tiles.getTileLocation(randint(0, 10), randint(0, 80)))
     tiles.placeOnTile(star7, tiles.getTileLocation(randint(0, 10), randint(0, 80)))
-    star.setVelocity(0, randint(30, 80))
-    star2.setVelocity(0, randint(30, 80))
-    star3.setVelocity(0, randint(30, 80))
-    star4.setVelocity(0, randint(30, 80))
-    star5.setVelocity(0, randint(30, 80))
-    star6.setVelocity(0, randint(30, 80))
-    star7.setVelocity(0, randint(30, 80))
+    star.setVelocity(0, randint(30, 50))
+    star2.setVelocity(0, randint(30, 50))
+    star3.setVelocity(0, randint(30, 50))
+    star4.setVelocity(0, randint(30, 50))
+    star5.setVelocity(0, randint(30, 50))
+    star6.setVelocity(0, randint(30, 50))
+    star7.setVelocity(0, randint(30, 50))
 }
 sprites.onOverlap(SpriteKind.star4, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     star4.destroy()
 })
+scene.onOverlapTile(SpriteKind.star2, sprites.dungeon.hazardLava1, function (sprite, location) {
+    star2.destroy()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.food5, function (sprite, otherSprite) {
+    food5.destroy()
+    info.changeScoreBy(1)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.flag, function (sprite, otherSprite) {
     level2()
+    flag.destroy()
+    star.destroy()
+    star2.destroy()
+    star3.destroy()
+    star4.destroy()
+    star5.destroy()
+    star6.destroy()
+    star7.destroy()
+    food1.destroy()
+    food2.destroy()
+    food3.destroy()
+    food4.destroy()
+    food5.destroy()
 })
+let redflag: Sprite = null
 let star7: Sprite = null
 let star6: Sprite = null
-let star5: Sprite = null
 let star4: Sprite = null
 let star3: Sprite = null
 let star2: Sprite = null
 let star: Sprite = null
+let star5: Sprite = null
+let food5: Sprite = null
 let food4: Sprite = null
 let food3: Sprite = null
 let food2: Sprite = null
@@ -547,7 +641,7 @@ food4 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.food4)
-food4 = sprites.create(img`
+food5 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -564,7 +658,7 @@ food4 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.food4)
+    `, SpriteKind.food5)
 level1()
 forever(function () {
     controller.moveSprite(mySprite, 100, 0)
