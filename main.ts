@@ -15,6 +15,15 @@ namespace SpriteKind {
     export const flag = SpriteKind.create()
     export const redflag = SpriteKind.create()
     export const food5 = SpriteKind.create()
+    export const food6 = SpriteKind.create()
+    export const food7 = SpriteKind.create()
+    export const food8 = SpriteKind.create()
+    export const food9 = SpriteKind.create()
+    export const food10 = SpriteKind.create()
+    export const food11 = SpriteKind.create()
+    export const food12 = SpriteKind.create()
+    export const food13 = SpriteKind.create()
+    export const food14 = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.star5, sprites.dungeon.hazardLava1, function (sprite, location) {
     star5.destroy()
@@ -157,8 +166,20 @@ sprites.onOverlap(SpriteKind.star5, SpriteKind.Player, function (sprite, otherSp
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.vy = -100
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.food11, function (sprite, otherSprite) {
+    food11.destroy()
+    info.changeScoreBy(1)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.food13, function (sprite, otherSprite) {
+    food13.destroy()
+    info.changeScoreBy(1)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.food3, function (sprite, otherSprite) {
     food3.destroy()
+    info.changeScoreBy(1)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.food14, function (sprite, otherSprite) {
+    food14.destroy()
     info.changeScoreBy(1)
 })
 function level1 () {
@@ -261,6 +282,101 @@ function level1 () {
         . . . . . . . . . . . . . . . . 
         `)
     tiles.placeOnTile(food5, tiles.getTileLocation(4, 74))
+    food6.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . b d b c . . . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . d d 5 1 1 1 1 1 1 1 5 d d . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . . . c b d b c . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
+    tiles.placeOnTile(food6, tiles.getTileLocation(2, 62))
+    food7.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . b d b c . . . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . d d 5 1 1 1 1 1 1 1 5 d d . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . . . c b d b c . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
+    tiles.placeOnTile(food7, tiles.getTileLocation(4, 55))
+    food8.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . b d b c . . . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . d d 5 1 1 1 1 1 1 1 5 d d . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . . . c b d b c . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
+    tiles.placeOnTile(food8, tiles.getTileLocation(5, 46))
+    food9.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . b d b c . . . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . d d 5 1 1 1 1 1 1 1 5 d d . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . . . c b d b c . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
+    tiles.placeOnTile(food9, tiles.getTileLocation(5, 40))
+    food10.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . b d b c . . . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . d d 5 1 1 1 1 1 1 1 5 d d . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . . . c b d b c . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
+    tiles.placeOnTile(food10, tiles.getTileLocation(8, 35))
 }
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
     mySprite.destroy()
@@ -269,6 +385,14 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sp
 sprites.onOverlap(SpriteKind.Player, SpriteKind.redflag, function (sprite, otherSprite) {
     redflag.destroy()
     level3()
+    food11.destroy()
+    food12.destroy()
+    food13.destroy()
+    food14.destroy()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.food6, function (sprite, otherSprite) {
+    food6.destroy()
+    info.changeScoreBy(1)
 })
 function level3 () {
     tiles.setTilemap(tilemap`level4`)
@@ -300,10 +424,90 @@ function level2 () {
         . . 2 2 . . . . . . . . . . . . 
         `, SpriteKind.redflag)
     tiles.placeOnTile(redflag, tiles.getTileLocation(3, 7))
+    food11.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . b d b c . . . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . d d 5 1 1 1 1 1 1 1 5 d d . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . . . c b d b c . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
+    tiles.placeOnTile(food11, tiles.getTileLocation(7, 4))
+    food12.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . b d b c . . . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . d d 5 1 1 1 1 1 1 1 5 d d . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . . . c b d b c . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
+    tiles.placeOnTile(food12, tiles.getTileLocation(10, 3))
+    food13.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . b d b c . . . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . d d 5 1 1 1 1 1 1 1 5 d d . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . . . c b d b c . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
+    tiles.placeOnTile(food13, tiles.getTileLocation(12, 5))
+    food14.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . b d b c . . . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . d d 5 1 1 1 1 1 1 1 5 d d . 
+        . . b b 5 5 5 1 1 1 5 5 5 b b . 
+        . . . c c 5 5 5 1 5 5 5 c c . . 
+        . . . . b 5 5 5 1 5 5 5 b . . . 
+        . . . . b b c 5 5 5 c b b . . . 
+        . . . . . . c b d b c . . . . . 
+        . . . . . . . b d b . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
+    tiles.placeOnTile(food14, tiles.getTileLocation(15, 3))
 }
 sprites.onOverlap(SpriteKind.star2, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     star2.destroy()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.food10, function (sprite, otherSprite) {
+    food10.destroy()
+    info.changeScoreBy(1)
 })
 sprites.onOverlap(SpriteKind.star3, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
@@ -332,8 +536,16 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food4, function (sprite, otherSp
     food4.destroy()
     info.changeScoreBy(1)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.food8, function (sprite, otherSprite) {
+    food8.destroy()
+    info.changeScoreBy(1)
+})
 scene.onOverlapTile(SpriteKind.star7, sprites.dungeon.hazardLava1, function (sprite, location) {
     star7.destroy()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.food9, function (sprite, otherSprite) {
+    food9.destroy()
+    info.changeScoreBy(1)
 })
 sprites.onOverlap(SpriteKind.star, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
@@ -344,6 +556,10 @@ scene.onOverlapTile(SpriteKind.star3, sprites.dungeon.hazardLava1, function (spr
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.food1, function (sprite, otherSprite) {
     food1.destroy()
+    info.changeScoreBy(1)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.food7, function (sprite, otherSprite) {
+    food7.destroy()
     info.changeScoreBy(1)
 })
 function starsPlacement () {
@@ -500,6 +716,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food5, function (sprite, otherSp
     info.changeScoreBy(1)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.flag, function (sprite, otherSprite) {
+    flag.destroy()
     level2()
     flag.destroy()
     star.destroy()
@@ -514,6 +731,15 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.flag, function (sprite, otherSpr
     food3.destroy()
     food4.destroy()
     food5.destroy()
+    food6.destroy()
+    food7.destroy()
+    food8.destroy()
+    food9.destroy()
+    food10.destroy()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.food12, function (sprite, otherSprite) {
+    food12.destroy()
+    info.changeScoreBy(1)
 })
 let redflag: Sprite = null
 let star7: Sprite = null
@@ -523,6 +749,15 @@ let star3: Sprite = null
 let star2: Sprite = null
 let star: Sprite = null
 let star5: Sprite = null
+let food14: Sprite = null
+let food13: Sprite = null
+let food12: Sprite = null
+let food11: Sprite = null
+let food10: Sprite = null
+let food9: Sprite = null
+let food8: Sprite = null
+let food7: Sprite = null
+let food6: Sprite = null
 let food5: Sprite = null
 let food4: Sprite = null
 let food3: Sprite = null
@@ -659,6 +894,168 @@ food5 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.food5)
+food6 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.food6)
+food7 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.food7)
+food8 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.food8)
+food9 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.food9)
+food10 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.food10)
+food11 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.food11)
+food12 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.food12)
+food13 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.food13)
+food14 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.food14)
 level1()
 forever(function () {
     controller.moveSprite(mySprite, 100, 0)
