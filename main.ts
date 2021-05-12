@@ -396,7 +396,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food6, function (sprite, otherSp
 })
 function level3 () {
     tiles.setTilemap(tilemap`level4`)
-    tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 11))
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 11))
 }
 scene.onOverlapTile(SpriteKind.star4, sprites.dungeon.hazardLava1, function (sprite, location) {
     star4.destroy()
