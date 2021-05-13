@@ -405,8 +405,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
-    mySprite.destroy()
-    game.over(false)
+    projectile.destroy()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.redflag, function (sprite, otherSprite) {
     redflag.destroy()
@@ -642,9 +641,6 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, othe
 sprites.onOverlap(SpriteKind.Player, SpriteKind.food7, function (sprite, otherSprite) {
     food7.destroy()
     info.changeScoreBy(1)
-})
-scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
-    projectile.destroy()
 })
 function starsPlacement () {
     star.setImage(img`
