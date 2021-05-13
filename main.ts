@@ -25,6 +25,7 @@ namespace SpriteKind {
     export const food13 = SpriteKind.create()
     export const food14 = SpriteKind.create()
     export const boss = SpriteKind.create()
+    export const beam = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.star5, sprites.dungeon.hazardLava1, function (sprite, location) {
     star5.destroy()
@@ -185,6 +186,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food14, function (sprite, otherS
 })
 function level1 () {
     tiles.setTilemap(tilemap`level1`)
+    levelcount += 1
     tiles.placeOnTile(flag, tiles.getTileLocation(5, 87))
     tiles.placeOnTile(mySprite, tiles.getTileLocation(4, 87))
     starsPlacement()
@@ -380,7 +382,27 @@ function level1 () {
     tiles.placeOnTile(food10, tiles.getTileLocation(8, 35))
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+    if (levelcount == 3) {
+        projectile = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . 7 7 7 7 7 7 7 7 7 7 7 7 . . 
+            . . 7 7 7 7 7 7 7 7 7 7 7 7 . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, mySprite, 140, 0)
+        projectile.startEffect(effects.coolRadial, 100)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
     mySprite.destroy()
@@ -400,6 +422,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food6, function (sprite, otherSp
 })
 function level3 () {
     tiles.setTilemap(tilemap`level4`)
+    levelcount += 1
     tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 11))
     boss.setImage(img`
         ....ffffff....................fffff.....
@@ -453,6 +476,7 @@ scene.onOverlapTile(SpriteKind.star4, sprites.dungeon.hazardLava1, function (spr
 })
 function level2 () {
     tiles.setTilemap(tilemap`level3`)
+    levelcount += 1
     tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 7))
     controller.moveSprite(mySprite, 100, 0)
     redflag = sprites.create(img`
@@ -563,6 +587,9 @@ sprites.onOverlap(SpriteKind.star3, SpriteKind.Player, function (sprite, otherSp
     info.changeScoreBy(1)
     star3.destroy()
 })
+statusbars.onZero(StatusBarKind.Health, function (status) {
+    boss.destroy(effects.disintegrate, 100)
+})
 sprites.onOverlap(SpriteKind.star6, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
     star6.destroy()
@@ -608,9 +635,16 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food1, function (sprite, otherSp
     food1.destroy()
     info.changeScoreBy(1)
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
+    projectile.destroy()
+    statusbar.value += -1
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.food7, function (sprite, otherSprite) {
     food7.destroy()
     info.changeScoreBy(1)
+})
+scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
+    projectile.destroy()
 })
 function starsPlacement () {
     star.setImage(img`
@@ -793,6 +827,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food12, function (sprite, otherS
 })
 let statusbar: StatusBarSprite = null
 let redflag: Sprite = null
+let projectile: Sprite = null
 let star7: Sprite = null
 let star6: Sprite = null
 let star4: Sprite = null
@@ -800,6 +835,7 @@ let star3: Sprite = null
 let star2: Sprite = null
 let star: Sprite = null
 let star5: Sprite = null
+let levelcount = 0
 let boss: Sprite = null
 let food14: Sprite = null
 let food13: Sprite = null
@@ -1126,7 +1162,11 @@ boss = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.boss)
+levelcount = 0
 level1()
+game.onUpdate(function () {
+	
+})
 forever(function () {
     controller.moveSprite(mySprite, 100, 0)
     scene.cameraFollowSprite(mySprite)
