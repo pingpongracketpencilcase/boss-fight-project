@@ -381,6 +381,9 @@ function level1 () {
         `)
     tiles.placeOnTile(food10, tiles.getTileLocation(8, 35))
 }
+scene.onOverlapTile(SpriteKind.Projectile, sprites.dungeon.hazardLava0, function (sprite, location) {
+    projectile.destroy()
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (levelcount == 3) {
         projectile = sprites.createProjectileFromSprite(img`
@@ -405,7 +408,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
-    projectile.destroy()
+    mySprite.destroy()
+    game.over(false)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.redflag, function (sprite, otherSprite) {
     redflag.destroy()
