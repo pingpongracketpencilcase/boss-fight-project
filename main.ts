@@ -187,7 +187,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food14, function (sprite, otherS
 function level1 () {
     tiles.setTilemap(tilemap`level1`)
     levelcount += 1
-    tiles.placeOnTile(flag, tiles.getTileLocation(5, 87))
+    tiles.placeOnTile(flag, tiles.getTileLocation(4, 0))
     tiles.placeOnTile(mySprite, tiles.getTileLocation(4, 87))
     starsPlacement()
     food1.setImage(img`
@@ -424,10 +424,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food6, function (sprite, otherSp
     info.changeScoreBy(1)
 })
 function level3 () {
+    game.splash("Level Three")
+    game.splash("Space Bar to Shoot Beams")
     tiles.setTilemap(tilemap`level4`)
     levelcount += 1
     tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 11))
-    boss.setImage(img`
+    boss = sprites.create(img`
         ....ffffff....................fffff.....
         ....ffffff....fffffffffff.....fffff.....
         ....ffffff.fff22222222222fff..fffff.....
@@ -468,8 +470,10 @@ function level3 () {
         .....ffffff....................fffff....
         .....ffffff....................fffff....
         .....ffffff....................fffff....
-        `)
-    tiles.placeOnTile(boss, tiles.getTileLocation(45, 9))
+        `, SpriteKind.boss)
+    tiles.placeOnTile(boss, tiles.getTileLocation(45, 6))
+    boss.vy = 50
+    boss.setBounceOnWall(true)
     statusbar = statusbars.create(20, 4, StatusBarKind.Health)
     statusbar.attachToSprite(boss)
     statusbar.setColor(7, 2)
@@ -478,6 +482,7 @@ scene.onOverlapTile(SpriteKind.star4, sprites.dungeon.hazardLava1, function (spr
     star4.destroy()
 })
 function level2 () {
+    game.splash("Level Two")
     tiles.setTilemap(tilemap`level3`)
     levelcount += 1
     tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 7))
@@ -500,7 +505,7 @@ function level2 () {
         . . 2 2 . . . . . . . . . . . . 
         . . 2 2 . . . . . . . . . . . . 
         `, SpriteKind.redflag)
-    tiles.placeOnTile(redflag, tiles.getTileLocation(3, 7))
+    tiles.placeOnTile(redflag, tiles.getTileLocation(59, 4))
     food11.setImage(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -592,6 +597,7 @@ sprites.onOverlap(SpriteKind.star3, SpriteKind.Player, function (sprite, otherSp
 })
 statusbars.onZero(StatusBarKind.Health, function (status) {
     boss.destroy(effects.disintegrate, 100)
+    game.over(true, effects.confetti)
 })
 sprites.onOverlap(SpriteKind.star6, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
@@ -639,8 +645,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food1, function (sprite, otherSp
     info.changeScoreBy(1)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.boss, function (sprite, otherSprite) {
-    projectile.destroy()
     statusbar.value += -1
+    projectile.destroy()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.food7, function (sprite, otherSprite) {
     food7.destroy()
@@ -826,6 +832,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.food12, function (sprite, otherS
     info.changeScoreBy(1)
 })
 let statusbar: StatusBarSprite = null
+let boss: Sprite = null
 let redflag: Sprite = null
 let projectile: Sprite = null
 let star7: Sprite = null
@@ -836,7 +843,6 @@ let star2: Sprite = null
 let star: Sprite = null
 let star5: Sprite = null
 let levelcount = 0
-let boss: Sprite = null
 let food14: Sprite = null
 let food13: Sprite = null
 let food12: Sprite = null
@@ -853,6 +859,8 @@ let food2: Sprite = null
 let food1: Sprite = null
 let flag: Sprite = null
 let mySprite: Sprite = null
+game.splash("Save the World")
+game.splash("Level One")
 info.setScore(0)
 mySprite = sprites.create(img`
     . . . . . f f 4 4 f f . . . . . 
@@ -1144,35 +1152,8 @@ food14 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.food14)
-boss = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.boss)
 levelcount = 0
 level1()
-game.onUpdate(function () {
-    for (let value of boss) {
-        if (true) {
-        	
-        } else {
-        	
-        }
-    }
-})
 forever(function () {
     controller.moveSprite(mySprite, 100, 0)
     scene.cameraFollowSprite(mySprite)
