@@ -1165,7 +1165,13 @@ boss = sprites.create(img`
 levelcount = 0
 level1()
 game.onUpdate(function () {
-	
+    for (let value of boss) {
+        if (true) {
+        	
+        } else {
+        	
+        }
+    }
 })
 forever(function () {
     controller.moveSprite(mySprite, 100, 0)
